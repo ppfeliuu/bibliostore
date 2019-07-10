@@ -1,0 +1,16 @@
+import { createStore, combineReducers, compose } from 'redux';
+import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase';
+import { reduxFirestore, firestoreReducer } from 'redux-firestore';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
+// Set Firestore
+const firebaseConfig = {
+    apiKey: "AIzaSyDk-I7m-FYbQxijlrEBGo9jeN3cQI1MHpo",
+    authDomain: "bibliostore-app.firebaseapp.com",
+    databaseURL: "https://bibliostore-app.firebaseio.com",
+    projectId: "bibliostore-app",
+    storageBucket: "bibliostore-app.appspot.com",
+    messagingSenderId: "648362671314",
+    appId: "1:648362671314:web:c9b2cd12835019d4"
+}
