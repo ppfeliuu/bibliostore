@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { firestoreConnect } from 'react-redux-firebase';
-import PropTypes from 'prop-types';
 
 class NuevoSuscriptor extends Component {
     state = { 
@@ -10,32 +8,6 @@ class NuevoSuscriptor extends Component {
         carrera: '',
         codigo: ''
      }
-
-     // Agregar nuevo suscriptor
-     agregarSuscriptor = e => {
-         e.preventDefault();
-
-         //extraer valores del state
-         const nuevoSuscriptor = this.state;
-         
-         // extraer firestore de props
-        const {firestore, history } = this.props
-
-         //Guardar en la bbdd
-         firestore.add({
-             collection: 'suscriptores'
-         }, nuevoSuscriptor)
-         .then(() => history.push('/suscriptores'))
-
-     }
-
-     // extrae los valores del input y los coloca en el state
-     leerDato = e => {
-         this.setState({
-             [e.target.name]: e.target.value
-         })
-     }
-
     render() { 
         return ( 
             <div className="row">
@@ -49,7 +21,7 @@ class NuevoSuscriptor extends Component {
 
                     <div className="row justify-content-center">
                         <div className="col-md-8 mt-5">
-                            <form onSubmit={this.agregarSuscriptor}>
+                            <form>
                                 <div className="form-group">
                                     <label>Nombre:</label>
                                     <input type="text"
@@ -104,9 +76,5 @@ class NuevoSuscriptor extends Component {
          );
     }
 }
-
-NuevoSuscriptor.protoTypes = {
-    firestore: PropTypes.object.isRequired
-}
  
-export default firestoreConnect() (NuevoSuscriptor);
+export default NuevoSuscriptor;

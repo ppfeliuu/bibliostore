@@ -3,28 +3,15 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Spinner from '../layout/Spinner';
 
-const Suscriptores = ({suscriptores, firestore }) => {
-    
-    if (!suscriptores) return <Spinner />;
+const Suscriptores = ({suscriptores}) => {
 
-
-
-    //Eliminar suscriptores
-    const eliminarSuscriptor = (id) => {
-        firestore.delete({
-            collection: 'suscriptores',
-            doc: id
-        })        
-    }
+    if (!suscriptores) return <h1>Cargando...</h1>
 
     return ( 
-        <div className="row">
+        <dic className="row">
             <div className="col-md-12 mb-4">
-                <Link to="/suscriptores/nuevo"
-                className="btn btn-primary"><i className="fas fa-plus"></i>{' '}Nuevo Suscriptor</Link>
+                { /* TODO : MOSTRAR ENLACE PARA CREAR NUEVOS SUSCRIPTORES */}
             </div>
             <div className="col-md-8">
                 <h2>
@@ -49,24 +36,14 @@ const Suscriptores = ({suscriptores, firestore }) => {
                         <td>
                             <Link to={`/suscriptores/mostrar/${suscriptor.id}`}
                                 className="btn btn-success btn-block"
-                            ><i className="fas fa-angle-double-right"></i>{' '}Mas info</Link>
-                            <button
-                                type="button"
-                                className="btn btn-danger btn-block"
-                                onClick={() => eliminarSuscriptor(suscriptor.id)}
-                            ><i className="fas fa-trash-alt"></i>{' '} Eliminar</button>
+                            ><i className="fas fa-angle-double-right">Mas info</i></Link>
                         </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </div>
+        </dic>
      );
-}
-
-Suscriptores.protoTypes = {
-    firestore: PropTypes.object.isRequired,
-    suscriptores: PropTypes.array
 }
  
 export default compose(

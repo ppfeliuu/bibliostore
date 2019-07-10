@@ -12,13 +12,4 @@ const MostrarSuscriptor = () => {
      );
 }
  
-export default compose(
-    firestoreConnect(props => [{
-        collection: 'suscriptores',
-        storeAs: 'suscriptor',
-        doc: props.match.params.id
-    }]),
-    connect(({ firestore: {ordered}}, props) => ({
-        suscriptor: ordered.suscriptor && ordered.suscriptor[0]
-    }))
-)(MostrarSuscriptor)
+export default MostrarSuscriptor;

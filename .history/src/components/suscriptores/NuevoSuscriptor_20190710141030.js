@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
-import PropTypes from 'prop-types';
 
 class NuevoSuscriptor extends Component {
     state = { 
@@ -19,14 +18,9 @@ class NuevoSuscriptor extends Component {
          const nuevoSuscriptor = this.state;
          
          // extraer firestore de props
-        const {firestore, history } = this.props
+
 
          //Guardar en la bbdd
-         firestore.add({
-             collection: 'suscriptores'
-         }, nuevoSuscriptor)
-         .then(() => history.push('/suscriptores'))
-
      }
 
      // extrae los valores del input y los coloca en el state
@@ -103,10 +97,6 @@ class NuevoSuscriptor extends Component {
             </div>
          );
     }
-}
-
-NuevoSuscriptor.protoTypes = {
-    firestore: PropTypes.object.isRequired
 }
  
 export default firestoreConnect() (NuevoSuscriptor);
