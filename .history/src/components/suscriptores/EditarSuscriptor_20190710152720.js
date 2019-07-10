@@ -111,10 +111,6 @@ class EditarSuscriptor extends Component {
     }
 }
 
-EditarSuscriptor.propTypes = {
-    firestore: PropTypes.object.isRequired
-}
-
 export default compose(
     firestoreConnect(props => [
         {

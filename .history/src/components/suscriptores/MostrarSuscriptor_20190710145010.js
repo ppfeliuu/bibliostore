@@ -33,10 +33,6 @@ const MostrarSuscriptor = ({suscriptor}) => {
         </div>
      );
 }
-
-MostrarSuscriptor.propTypes = {
-    firestore: PropTypes.object.isRequired
-}
  
 export default compose(
     firestoreConnect(props => [{

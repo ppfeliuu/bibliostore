@@ -26,16 +26,9 @@ const MostrarSuscriptor = ({suscriptor}) => {
                 <p>
                     <span className="font-weight-bold">Carrera:</span>{' '} {suscriptor.carrera}
                 </p>
-                <p>
-                    <span className="font-weight-bold">Código:</span>{' '} {suscriptor.codigo}
-                </p>                
             </div>
         </div>
      );
-}
-
-MostrarSuscriptor.propTypes = {
-    firestore: PropTypes.object.isRequired
 }
  
 export default compose(

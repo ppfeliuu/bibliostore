@@ -27,14 +27,9 @@ class EditarSuscriptor extends Component {
             codigo: this.codigoInput.current.value
         }
 
-        //Extraer firestore y history de props
-        const { suscriptor, firestore, history } = this.props;
+        console.log(suscriptorActualizado);
 
         //Save en firestore
-        firestore.update({
-            collection: 'suscriptores',
-            doc: suscriptor.id
-        }, suscriptorActualizado).then(history.push('/suscriptores'));
     }
     
     render() { 
@@ -109,10 +104,6 @@ class EditarSuscriptor extends Component {
             </div>
          );
     }
-}
-
-EditarSuscriptor.propTypes = {
-    firestore: PropTypes.object.isRequired
 }
 
 export default compose(
