@@ -24,7 +24,7 @@ class PrestamoLibro extends Component {
         const { busqueda } = this.state;
 
         // extraer firestore
-        const { firestore, buscarUsuario } = this.props;
+        const { firestore } = this.props;
 
         // hacer la consulta
         const coleccion = firestore.collection('suscriptores');
@@ -56,32 +56,25 @@ class PrestamoLibro extends Component {
 
     // guarda los datos del solicitante del prestamo
     solicitarPrestamo = () => {
-        const {usuario}  = this.props;
+        const suscriptor  = this.state.resultado;
         
         // fecha de prestamo
-        usuario.fecha_solicitud = new Date().toLocaleDateString();
+        suscriptor.fechaSolicitud = new Date().toLocaleDateString();
 
-        //No se pueden mutar los props, hay que cear una copia y un arreglo nuevo
-        let prestados = [];
-        prestados = [...this.props.libro.prestados, usuario];
+        //Obtener libro
+        const libroActualizado = this.props.libro;
 
-        //Copiar el objeto y añadir los prestados
-        const libro = {...this.props.libro};
-
-        //eliminar libros prestado anteriore
-        delete libro.prestados;
-
-        // Y reasignar los prestado
-        libro.prestados = prestados;            
+        // agregar el suscriptor al libro
+        libroActualizado.prestados.push( suscriptor );
 
         // obtener firestore y history the props
 
-        const { firestore, history } = this.props;
+        const { firestore, history, libro } = this.props;
 
         firestore.update({
             collection: 'libros',
             doc: libro.id
-        }, libro).then(history.push('/'));
+        }, libroActualizado).then(history.push('/'));
 
 
     }
@@ -111,17 +104,6 @@ class PrestamoLibro extends Component {
         } else {
             fichaAlumno = null;
             btnSolicitar = null;
-        }
-
-        //Mostrar mensaje de error
-        const { noResultados } = this.state;
-        let mensajeResultado = '';
-        if (noResultados) {
-            mensajeResultado = <div className="alert alert-danger text-center font-weight-bold">No hay resultados para éste código
-
-            </div>
-        } else {
-            mensajeResultado = null;
         }
 
         return ( 
@@ -156,10 +138,6 @@ class PrestamoLibro extends Component {
                                 { /* Muestra ficha alumno y btn */}
                                 {fichaAlumno}
                                 {btnSolicitar}
-
-                                { /* No hay resultaos */}
-
-                                {mensajeResultado}
                         </div>    
                     </div>               
                 </div>

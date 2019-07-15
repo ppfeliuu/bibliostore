@@ -46,7 +46,7 @@ function App() {
             component={EditarSuscriptor}
           />
 
-          <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </div>
     </Router>

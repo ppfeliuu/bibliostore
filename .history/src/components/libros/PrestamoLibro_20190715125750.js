@@ -117,7 +117,7 @@ class PrestamoLibro extends Component {
         const { noResultados } = this.state;
         let mensajeResultado = '';
         if (noResultados) {
-            mensajeResultado = <div className="alert alert-danger text-center font-weight-bold">No hay resultados para éste código
+            mensajeResultado = <div className="alert alert-danger display-4 text-center">No hay resultados para éste código
 
             </div>
         } else {

@@ -65,23 +65,16 @@ class PrestamoLibro extends Component {
         let prestados = [];
         prestados = [...this.props.libro.prestados, usuario];
 
-        //Copiar el objeto y añadir los prestados
-        const libro = {...this.props.libro};
-
-        //eliminar libros prestado anteriore
-        delete libro.prestados;
-
-        // Y reasignar los prestado
-        libro.prestados = prestados;            
+        console.log(prestados);
 
         // obtener firestore y history the props
 
-        const { firestore, history } = this.props;
+        /* const { firestore, history, libro } = this.props;
 
         firestore.update({
             collection: 'libros',
             doc: libro.id
-        }, libro).then(history.push('/'));
+        }, libroActualizado).then(history.push('/')); */
 
 
     }
@@ -111,17 +104,6 @@ class PrestamoLibro extends Component {
         } else {
             fichaAlumno = null;
             btnSolicitar = null;
-        }
-
-        //Mostrar mensaje de error
-        const { noResultados } = this.state;
-        let mensajeResultado = '';
-        if (noResultados) {
-            mensajeResultado = <div className="alert alert-danger text-center font-weight-bold">No hay resultados para éste código
-
-            </div>
-        } else {
-            mensajeResultado = null;
         }
 
         return ( 
@@ -156,10 +138,6 @@ class PrestamoLibro extends Component {
                                 { /* Muestra ficha alumno y btn */}
                                 {fichaAlumno}
                                 {btnSolicitar}
-
-                                { /* No hay resultaos */}
-
-                                {mensajeResultado}
                         </div>    
                     </div>               
                 </div>

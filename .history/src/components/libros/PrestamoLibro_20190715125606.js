@@ -114,10 +114,9 @@ class PrestamoLibro extends Component {
         }
 
         //Mostrar mensaje de error
-        const { noResultados } = this.state;
         let mensajeResultado = '';
         if (noResultados) {
-            mensajeResultado = <div className="alert alert-danger text-center font-weight-bold">No hay resultados para éste código
+            mensajeResultado = <div className="alert alert-danger">No hay resultados
 
             </div>
         } else {
@@ -156,10 +155,6 @@ class PrestamoLibro extends Component {
                                 { /* Muestra ficha alumno y btn */}
                                 {fichaAlumno}
                                 {btnSolicitar}
-
-                                { /* No hay resultaos */}
-
-                                {mensajeResultado}
                         </div>    
                     </div>               
                 </div>

@@ -18,8 +18,6 @@ import NuevoSuscriptor from "./components/suscriptores/NuevoSuscriptor";
 import Login from './components/auth/Login';
 import Navbar from "./components/layout/Navbar";
 
-import { UserIsAuthenticated, UserIsNotAuthenticated} from './helpers/auth';
-
 function App() {
   return (
     <Provider store={store}>
@@ -27,14 +25,14 @@ function App() {
       <Navbar />
       <div className="container">
         <Switch>
-          <Route exact path="/" component={UserIsAuthenticated(Libros)} />
-          <Route exact path="/libros/mostrar/:id" component={UserIsAuthenticated(MostrarLibros)} />
-          <Route exact path="/libros/nuevo" component={UserIsAuthenticated(NuevoLibro)} />
-          <Route exact path="/libros/editar/:id" component={UserIsAuthenticated(EditarLibro)} />
-          <Route exact path="/libros/prestamo/:id" component={UserIsAuthenticated(PrestamoLibro)} />
+          <Route exact path="/" component={Libros} />
+          <Route exact path="/libros/mostrar/:id" component={MostrarLibros} />
+          <Route exact path="/libros/nuevo" component={NuevoLibro} />
+          <Route exact path="/libros/editar/:id" component={EditarLibro} />
+          <Route exact path="/libros/prestamo/:id" component={PrestamoLibro} />
 
-          <Route exact path="/suscriptores" component={UserIsAuthenticated(Suscriptores)} />
-          <Route exact path="/suscriptores/nuevo" component={UserIsAuthenticated(NuevoSuscriptor)} />
+          <Route exact path="/suscriptores" component={Suscriptores} />
+          <Route exact path="/suscriptores/nuevo" component={NuevoSuscriptor} />
           <Route
             exact
             path="/suscriptores/mostrar/:id"
@@ -46,7 +44,7 @@ function App() {
             component={EditarSuscriptor}
           />
 
-          <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </div>
     </Router>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
-import PropTypes from 'prop-types';
 
 
 
@@ -21,13 +20,6 @@ class Navbar extends Component {
         } else {
             return { usuarioAutenticado: false }
         }
-    }
-
-    // Cerrar sesion en firebase
-    cerraSesion = () => {
-        const { firebase } = this.props;
-        firebase.logout();
-
     }
 
     render() { 
@@ -71,21 +63,12 @@ class Navbar extends Component {
                                     {auth.email}
                                 </a>
                             </li>
-
-                            <li className="nav-item">
-                                <button type="button" className="btn btn-danger" onClick={this.cerraSesion}>Cerrar Sesión</button>
-                            </li>
                         </ul>
                     ): null}          
                 </div>
             </nav>
          );
     }
-}
-
-Navbar.protoTypes = {
-    firebase: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired
 }
  
 export default compose(
